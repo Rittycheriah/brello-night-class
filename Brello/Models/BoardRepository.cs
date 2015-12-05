@@ -10,6 +10,8 @@ namespace Brello.Models
     {
         private BoardContext context;
 
+        public IDbSet<ApplicationUser> Users {get {return context.Users;} }
+
         public BoardRepository()
         {
             context = new BoardContext();
@@ -79,7 +81,7 @@ namespace Brello.Models
 
         public List<Board> GetBoards(ApplicationUser user1)
         {
-            var query = from b in context.Boards where b.Owner == user1 select b;
+            var query = from b in context.Boards where b.Owner.Id == user1.Id select b;
             return query.ToList<Board>(); // Same as query.ToList();
         }
 

@@ -12,6 +12,10 @@ namespace Brello.Models
         public int BrelloListId { get; set; }
         public string Title { get; set; }
         public List<Card> Cards { get; set; }
+
+        [Required]
         public DateTime CreatedAt { get; set; }
+
+        public virtual Board Board { get; set; }
     }
 }

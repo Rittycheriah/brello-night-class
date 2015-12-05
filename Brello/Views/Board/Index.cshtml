@@ -9,13 +9,19 @@
         @foreach (var item in Model)
         {
             <div class="brellolist-wrapper">
-                <div class="brellolist-header"></div>
-                <div class="brellolist">
-                    <ul class="center">
-
-                    </ul>
+                <div id="list-modal" role="dialog" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            @using (Html.BeginForm("CreateList", "Board", FormMethod.Post, new { id = "list-form" }))
+                            {
+                                <div class="modal-header">Add New List</div>
+                                <div class="modal-body">@Html.TextBox</div>
+                                <div class="modal-footer">@Html.ActionLink("Submit", "", "", new { @id = "list-submit" })</div>
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div class="brellolist-footer"></div>
+                <button class="btn btn-info" data-toggle="modal" data-target="#list-modal">Create</button>
             </div>
         }
     </div>
